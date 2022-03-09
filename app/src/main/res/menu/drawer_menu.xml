@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home_id"
+        android:icon="@drawable/ic_baseline_home_"
+        android:title="Dashboard" />
+
+    <item
+        android:id="@+id/Categories_id"
+        android:icon="@drawable/ic_baseline_category_24"
+        android:title="Categories" />
+    <item
+        android:id="@+id/profile_id"
+        android:icon="@drawable/ic_baseline_perm_identity_"
+        android:title="Profile" />
+    <item
+        android:id="@+id/share_it_id"
+        android:icon="@drawable/ic_baseline_share_24"
+        android:title="Share " />
+
+    <item
+        android:id="@+id/report_id"
+        android:icon="@drawable/ic_baseline_insert_drive_file_24"
+        android:title="Report" />
+
+
+    <item
+        android:id="@+id/backup_id"
+        android:icon="@drawable/ic_baseline_backup_"
+        android:title="Backup" />
+
+    <item
+        android:id="@+id/logout_id"
+        android:icon="@drawable/ic_baseline_logout_"
+        android:title="Logout" />
+
+
+    <item
+        android:id="@+id/setting_id"
+        android:icon="@drawable/ic_baseline_settings_"
+        android:title="Setting" />
+
+
+</menu>
