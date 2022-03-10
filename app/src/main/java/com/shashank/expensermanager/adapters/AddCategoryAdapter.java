@@ -31,10 +31,12 @@ public class AddCategoryAdapter extends RecyclerView.Adapter<AddCategoryAdapter.
         this.context = context;
     }
 
+
     @Override
     public AddCategoryAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.new_item, parent, false);
+
         return new AddCategoryAdapter.MyViewHolder(view);
     }
 

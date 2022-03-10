@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.shashank.expensermanager.adapters.AddCategoryAdapter;
 
 import java.lang.reflect.Type;
@@ -35,6 +36,7 @@ public class Add_Category extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add__category);
         sharedPreferences = getSharedPreferences("Category", MODE_PRIVATE);
+
         loadCategory();
         floatingActionButtonbutton = findViewById(R.id.fab2);
         recyclerView = findViewById(R.id.job_recycler);

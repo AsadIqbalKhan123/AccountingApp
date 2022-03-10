@@ -17,8 +17,8 @@ import android.view.View;
 
 import com.shashank.expensermanager.Add_Category;
 import com.shashank.expensermanager.BuildConfig;
+import com.shashank.expensermanager.ExportPDF_Activity;
 import com.shashank.expensermanager.Profile_Activity;
-import com.shashank.expensermanager.Proposition_Activity;
 import com.shashank.expensermanager.R;
 import com.shashank.expensermanager.Report_Activity;
 import com.shashank.expensermanager.SettingsActivity;
@@ -101,6 +101,10 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.logout_id:
                     new AlertDialog.Builder(MainActivity.this).setTitle("Are you sure?").setMessage("Do you want to logout?").
                             setPositiveButton("Logout", (dialog, which) -> {
+
+
+                                this.finishAffinity();
+
 //                                FirebaseAuth.getInstance().signOut();
 
                             }).show();
@@ -149,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
 
                 case R.id.backup_id:
 
-                    Intent myspinner = new Intent(MainActivity.this, Proposition_Activity.class);
+                    Intent myspinner = new Intent(MainActivity.this, ExportPDF_Activity.class);
                     startActivity(myspinner);
 
                     break;

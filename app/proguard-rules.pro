@@ -1,7 +1,14 @@
 # Add project specific ProGuard rules here.
 # You can control the set of applied configuration files using the
 # proguardFiles setting in build.gradle.
-#
+
+
+ -keep class javax.xml.crypto.dsig.** { *; }
+ -dontwarn javax.xml.crypto.dsig.**
+ -keep class javax.xml.crypto.** { *; }
+ -dontwarn javax.xml.crypto.**
+ -keep class org.spongycastle.** { *; }
+ -dontwarn org.spongycastle.**
 # For more details, see
 #   http://developer.android.com/guide/developing/tools/proguard.html
 
