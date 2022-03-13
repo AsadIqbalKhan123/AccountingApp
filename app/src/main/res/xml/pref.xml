@@ -9,11 +9,11 @@
         android:key="@string/pref_country_key"
         android:title="@string/country_currency" />
 
-    <ListPreference
-        android:defaultValue="@string/default_date_format"
-        android:entries="@array/date_formats"
-        android:entryValues="@array/date_formats"
-        android:key="@string/date_format_key"
-        android:title="@string/date_format" />
+<!--    <ListPreference-->
+<!--        android:defaultValue="@string/default_date_format"-->
+<!--        android:entries="@array/date_formats"-->
+<!--        android:entryValues="@array/date_formats"-->
+<!--        android:key="@string/date_format_key"-->
+<!--        android:title="@string/date_format" />-->
 
 </PreferenceScreen>

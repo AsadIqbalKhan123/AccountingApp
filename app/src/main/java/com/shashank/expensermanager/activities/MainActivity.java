@@ -18,9 +18,9 @@ import android.view.View;
 import com.shashank.expensermanager.Add_Category;
 import com.shashank.expensermanager.BuildConfig;
 import com.shashank.expensermanager.ExportPDF_Activity;
+import com.shashank.expensermanager.PDF_Activity;
 import com.shashank.expensermanager.Profile_Activity;
 import com.shashank.expensermanager.R;
-import com.shashank.expensermanager.Report_Activity;
 import com.shashank.expensermanager.SettingsActivity;
 import com.shashank.expensermanager.adapters.SectionsPageAdapter;
 import com.shashank.expensermanager.fragments.BalanceFragment;
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
 
                 case R.id.report_id:
 
-                    Intent repo = new Intent(MainActivity.this, Report_Activity.class);
+                    Intent repo = new Intent(MainActivity.this, PDF_Activity.class);
                     startActivity(repo);
 
                     break;

@@ -277,7 +277,7 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
             }
         });
 
-        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat df = new SimpleDateFormat("dd/MMM/yyyy");
         String first = df.format(new Date(firstDate));
         Date today = Calendar.getInstance().getTime();
         String todaysDate = df.format(today);
@@ -311,7 +311,7 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
         Calendar calendar;
         calendar = Calendar.getInstance();
 
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        DateFormat df = new SimpleDateFormat("dd/MMM/yyyy", Locale.getDefault());
         String startDate = "", endDate = "";
         // Set the calendar to sunday of the current week
         calendar.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
@@ -354,7 +354,7 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
         Calendar calendar;
         calendar = Calendar.getInstance();
 
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        DateFormat df = new SimpleDateFormat("dd/MMM/yyyy", Locale.getDefault());
         String startDate = "", endDate = "";
 
         calendar.set(Calendar.DAY_OF_MONTH, 1);
@@ -381,6 +381,7 @@ public class BalanceFragment extends Fragment implements AdapterView.OnItemSelec
                 balanceAmount = balance;
 
             }
+
         });
         AppExecutors.getInstance().mainThread().execute(new Runnable() {
             @Override

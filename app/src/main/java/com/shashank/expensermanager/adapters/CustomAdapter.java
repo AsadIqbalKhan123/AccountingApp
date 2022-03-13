@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.shashank.expensermanager.ItemClickListener;
 import com.shashank.expensermanager.R;
 import com.shashank.expensermanager.UserData;
 import com.shashank.expensermanager.activities.AddExpenseActivity;
@@ -28,13 +29,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     ArrayList<UserData> list;
     Context context;
+    ItemClickListener listener;
 
     private List<TransactionEntry> transactionEntries;
     private AppDatabase appDatabase;
 
-    public CustomAdapter(Context context, List<TransactionEntry> transactionEntries) {
+    public CustomAdapter(Context context, List<TransactionEntry> transactionEntries, ItemClickListener listener) {
         this.context = context;
         this.transactionEntries = transactionEntries;
+        this.listener = listener;
     }
 
     @NonNull
@@ -74,8 +77,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
-                                transactionEntries.remove(model);
-                                notifyDataSetChanged();
+
+                                if (listener != null) {
+                                    listener.OnItemClick(position);
+                                    notifyDataSetChanged();
+                                }
+//                                transactionEntries.remove(model);
+//                                notifyDataSetChanged();
+//                                transactionEntries.remove(model);
+
 
                             }
                         })
@@ -119,6 +129,20 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             return transactionEntries.size();
         }
     }
+
+    public interface ItemClickListener {
+
+        void OnItemClick(int position);
+    }
+
+
+
+    public void setTasks(List<TransactionEntry> personList) {
+        transactionEntries = personList;
+        notifyDataSetChanged();
+    }
+
+
 
     public List<TransactionEntry> getTransactionEntries() {
         return transactionEntries;

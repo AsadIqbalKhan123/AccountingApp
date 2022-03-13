@@ -16,7 +16,6 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.LineSeparator;
 import com.shashank.expensermanager.models.Expense;
@@ -24,7 +23,6 @@ import com.shashank.expensermanager.models.Expense;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class PDF_Activity extends AppCompatActivity {
@@ -33,14 +31,6 @@ public class PDF_Activity extends AppCompatActivity {
     final private int REQUEST_CODE_ASK_PERMISSIONS = 111;
     ImageView imgdownload;
     ArrayList<Expense> MyList1;
-    Expense expense;
-    Context context;
-    Expense name;
-    Expense price;
-    Expense category;
-    Expense url;
-    Expense type;
-    Expense date;
     Button btn_pdf;
     private File pdfFile;
 
@@ -119,14 +109,12 @@ public class PDF_Activity extends AppCompatActivity {
          * Creating Document
          */
         Document document = new Document();
-        File file = new File(Environment.getExternalStorageDirectory().getPath() + "Repoo.pdf");
+        File file = new File(Environment.getExternalStorageDirectory() + "Repo.pdf");
 
 // Location to save
         try {
             PdfWriter.getInstance(document, new FileOutputStream(file));
-        } catch (DocumentException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
+        } catch (DocumentException | FileNotFoundException e) {
             e.printStackTrace();
         }
 
@@ -148,17 +136,9 @@ public class PDF_Activity extends AppCompatActivity {
         lineSeparator.setLineColor(new BaseColor(0, 0, 0, 68));
 
 
-        BaseFont urName = null;
-        try {
-            urName = BaseFont.createFont("assets/your font.ttf", "UTF-8", BaseFont.EMBEDDED);
-        } catch (DocumentException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         // Title Order Details...
 // Adding Title....
-        Font mOrderDetailsTitleFont = new Font(urName, 36.0f, Font.NORMAL, BaseColor.BLACK);
+        Font mOrderDetailsTitleFont = new Font(Font.FontFamily.HELVETICA, 36.0f, Font.NORMAL, BaseColor.BLACK);
 // Creating Chunk
         Chunk mOrderDetailsTitleChunk = new Chunk("User Details", mOrderDetailsTitleFont);
 // Creating Paragraph to add...
@@ -174,7 +154,7 @@ public class PDF_Activity extends AppCompatActivity {
 
 // Fields of Order Details...
 // Adding Chunks for Title and value
-        Font mOrderIdFont = new Font(urName, mHeadingFontSize, Font.NORMAL, mColorAccent);
+        Font mOrderIdFont = new Font(Font.FontFamily.HELVETICA, mHeadingFontSize, Font.NORMAL, mColorAccent);
         Chunk mOrderIdChunk = new Chunk("Record No:", mOrderIdFont);
         Paragraph mOrderIdParagraph = new Paragraph(mOrderIdChunk);
         try {

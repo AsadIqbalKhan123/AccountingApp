@@ -199,7 +199,6 @@ public class ExpenseFragment extends Fragment {
                     public void onChanged(@Nullable List<TransactionEntry> transactionEntriesFromDb) {
                         Log.i(LOG_TAG, "Actively retrieving from DB");
 
-
                         transactionEntries = transactionEntriesFromDb;
 //                        Logging to check DB values
                         for (int i = 0; i < transactionEntries.size(); i++) {
@@ -208,12 +207,26 @@ public class ExpenseFragment extends Fragment {
                             //Log.i("DESCRIPTION AMOUNT",description + String.valueOf(amount));
                         }
 
+                        CustomAdapter.ItemClickListener listner = (CustomAdapter.ItemClickListener) position -> {
+                            AppExecutors.getInstance().diskIO().execute(new Runnable() {
+                                @Override
+                                public void run() {
+                                    List<TransactionEntry> tasks = customAdapter.getTransactionEntries();
+                                    mAppDb.transactionDao().delete(tasks.get(position));
 
-//                        Setting Adapter
-                        customAdapter = new CustomAdapter(getActivity(), transactionEntries);
+                                }
+                            });
+                        };
 
+                        customAdapter = new CustomAdapter(getContext(), transactionEntries, listner);
                         rv.setAdapter(customAdapter);
                         customAdapter.notifyDataSetChanged();
+
+//                        Setting Adapter
+//                        customAdapter = new CustomAdapter(getActivity(), transactionEntries);
+
+//                        rv.setAdapter(customAdapter);
+//                        customAdapter.notifyDataSetChanged();
                     }
                 });
     }

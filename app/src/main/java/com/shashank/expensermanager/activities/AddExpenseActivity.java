@@ -111,9 +111,13 @@ public class AddExpenseActivity extends AppCompatActivity {
         if (intentFrom.equals(Constants.addIncomeString)) {
             categoryOfTransaction = Constants.incomeCategory;
             setTitle("Add Income");
+
             for (int i = 0; i < Mylist.size(); i++) {
                 categories.add(Mylist.get(i).getName());
             }
+//            for (int i = 0; i < Mylist.size(); i++) {
+//                categories.add(Mylist.get(i).getName());
+//            }
             categorySpinner.setClickable(true);
             categorySpinner.setEnabled(true);
             categorySpinner.setAdapter(new ArrayAdapter<>(AddExpenseActivity.this, android.R.layout.simple_list_item_1, categories));
@@ -154,9 +158,21 @@ public class AddExpenseActivity extends AppCompatActivity {
         } else if (intentFrom.equals(Constants.editExpenseString)) {
             categoryOfTransaction = Constants.expenseCategory;
             setTitle("Edit Expense");
+
+            if (intentFrom.equals(Constants.addExpenseString))
+                categoryOfTransaction = Constants.expenseCategory;
+            setTitle("Add Expense");
+            for (int i = 0; i < Mylist.size(); i++) {
+                categories.add(Mylist.get(i).getName());
+            }
+            categorySpinner.setAdapter(new ArrayAdapter<>(AddExpenseActivity.this,
+                    android.R.layout.simple_list_item_1, categories));
+
+
             amountTextInputEditText.setText(String.valueOf(intent.getIntExtra("amount", 0)));
             amountTextInputEditText.setSelection(amountTextInputEditText.getText().length());
             descriptionTextInputEditText.setText(intent.getStringExtra("description"));
+
             descriptionTextInputEditText.setSelection(descriptionTextInputEditText.getText().length());
             dateTextView.setText(intent.getStringExtra("date"));
             transactionid = intent.getIntExtra("id", -1);

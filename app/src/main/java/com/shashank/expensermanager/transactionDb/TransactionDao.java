@@ -41,6 +41,9 @@ public interface TransactionDao {
     @Delete
     void removeExpense(TransactionEntry transactionEntry);
 
+    @Delete
+    void delete(TransactionEntry transactionEntry);
+
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void updateExpenseDetails(TransactionEntry transactionEntry);
 }

@@ -57,7 +57,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="4dp"
         android:padding="5dp"
-        android:text="01/10/2018 - 30/1/2018"
+        android:text="01/10/2018 -- 30/1/2018"
         android:textAlignment="center"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
