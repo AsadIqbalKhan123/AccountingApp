@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 case R.id.backup_id:
 
-                    Intent myspinner = new Intent(MainActivity.this, PDF_Activity.class);
+                    Intent myspinner = new Intent(MainActivity.this, Sample_Act.class);
                     startActivity(myspinner);
 
                     break;

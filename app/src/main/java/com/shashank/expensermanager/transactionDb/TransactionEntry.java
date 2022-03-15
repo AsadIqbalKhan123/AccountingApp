@@ -3,11 +3,12 @@ package com.shashank.expensermanager.transactionDb;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
 import java.util.Date;
 
-@Entity(tableName = "transactionTable")
+@Entity(tableName = "transactionTable", indices = {@Index(value = {"userId"}, unique = true)})
 public class TransactionEntry {
 
     @PrimaryKey(autoGenerate = true)
@@ -18,8 +19,6 @@ public class TransactionEntry {
     private String description;
     private Date date;                  // COMPLETED: 13-09-2018 Add appropriate type converter
     private String transactionType; //to decide whether income or expense
-
-
 
 
     @ColumnInfo(name = "userId")
