@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.shashank.expensermanager.activities.MainActivity;
 import com.shashank.expensermanager.transactionDb.AppDatabase;
 import com.shashank.expensermanager.transactionDb.TransactionDao;
 import com.shashank.expensermanager.transactionDb.TransactionEntry;
@@ -78,11 +77,11 @@ public class Register_Activity extends AppCompatActivity {
         });
 
 
-
         log_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            startActivity(new Intent(Register_Activity.this,Login_Activity.class));
+                startActivity(new Intent(Register_Activity.this, Login_Activity.class));
+                finish();
             }
         });
 
