@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout_real"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#009688"
@@ -32,15 +33,15 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ux" />
 
-<!--            <ImageView-->
-<!--                android:id="@+id/add_imge_btn"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_alignParentEnd="true"-->
-<!--                android:layout_alignParentBottom="false"-->
-<!--                android:background="@android:color/transparent"-->
-<!--                android:src="@drawable/ic_baseline_add_circle_outline_24"-->
-<!--                app:tint="@color/white" />-->
+            <!--            <ImageView-->
+            <!--                android:id="@+id/add_imge_btn"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_alignParentEnd="true"-->
+            <!--                android:layout_alignParentBottom="false"-->
+            <!--                android:background="@android:color/transparent"-->
+            <!--                android:src="@drawable/ic_baseline_add_circle_outline_24"-->
+            <!--                app:tint="@color/white" />-->
 
         </RelativeLayout>
 
@@ -49,19 +50,18 @@
     <TextView
         android:id="@+id/tx_name"
         style="@style/TextAppearance.AppCompat.Medium"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:paddingVertical="2dp"
         android:paddingStart="10dp"
-        android:text="User Name "
-        android:textColor="@color/black"
-
         android:textStyle="bold" />
 
 
     <TextView
         android:id="@+id/tx_email"
         style="@style/TextAppearance.AppCompat.Subhead"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="5dp"
         android:paddingLeft="10dp"

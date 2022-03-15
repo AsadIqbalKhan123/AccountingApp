@@ -8,7 +8,6 @@ import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
-
 import java.util.List;
 
 @Dao
@@ -24,13 +23,13 @@ public interface TransactionDao {
     int getAmountByTransactionType(String transactionType);
 
     @Query("select sum(amount) from transactionTable where transactionType =:transactionType and  date between :startDate and :endDate")
-    int getAmountbyCustomDates(String transactionType,long startDate,long endDate);
+    int getAmountbyCustomDates(String transactionType, long startDate, long endDate);
 
     @Query("select sum(amount) from transactionTable where category=:category")
     int getSumExpenseByCategory(String category);
 
     @Query("select sum(amount) from transactionTable where category=:category and date between :startDate and :endDate")
-    int getSumExpenseByCategoryCustomDate(String category,long startDate, long endDate);
+    int getSumExpenseByCategoryCustomDate(String category, long startDate, long endDate);
 
     @Query("select min(date) from transactionTable ")
     long getFirstDate();
@@ -46,4 +45,15 @@ public interface TransactionDao {
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void updateExpenseDetails(TransactionEntry transactionEntry);
+
+
+    // FOR REGISTISTRATION USER WE USE THIS QUERY ....
+
+    @Insert
+    void registerUser(TransactionEntry transactionEntry);
+
+    @Query("select * from transactionTable where userId=(:userId) and password=(:password)")
+    TransactionEntry login(String userId, String password);
+
+
 }

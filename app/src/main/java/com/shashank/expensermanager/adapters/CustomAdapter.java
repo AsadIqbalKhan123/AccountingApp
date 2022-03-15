@@ -1,5 +1,6 @@
 package com.shashank.expensermanager.adapters;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,17 +14,19 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.shashank.expensermanager.ItemClickListener;
 import com.shashank.expensermanager.R;
 import com.shashank.expensermanager.UserData;
 import com.shashank.expensermanager.activities.AddExpenseActivity;
 import com.shashank.expensermanager.transactionDb.AppDatabase;
 import com.shashank.expensermanager.transactionDb.TransactionEntry;
-import com.shashank.expensermanager.utils.Constants;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.shashank.expensermanager.utils.Constants.editExpenseString;
+import static com.shashank.expensermanager.utils.Constants.editIncomeString;
+import static com.shashank.expensermanager.utils.Constants.incomeCategory;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
@@ -49,7 +52,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         String amount;
 
         TransactionEntry model = transactionEntries.get(position);
@@ -105,8 +108,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
 
         holder.categoryTextViewrv.setText(transactionEntries.get(position).getCategory());
-        if (transactionEntries.get(position).getTransactionType().equals(Constants.incomeCategory)) {
-            amount = "+" + transactionEntries.get(position).getAmount();
+        if (incomeCategory.equals(transactionEntries.get(position).getTransactionType())) {
+            amount = "" + transactionEntries.get(position).getAmount();
             holder.amountTextViewrv.setText(amount);
             holder.amountTextViewrv.setTextColor(Color.parseColor("#aeea00"));
         } else {
@@ -116,8 +119,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         }
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        String dateToBeSet = sdf.format(transactionEntries.get(position).getDate());
-        holder.dateTextViewrv.setText(dateToBeSet);
+//        String dateToBeSet = sdf.format(transactionEntries.get(position).getDate());
+////        holder.dateTextViewrv.setText(dateToBeSet);
         holder.descriptionTextViewrv.setText(transactionEntries.get(position).getDescription());
     }
 
@@ -130,22 +133,19 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         }
     }
 
-    public interface ItemClickListener {
-
-        void OnItemClick(int position);
-    }
-
-
-
     public void setTasks(List<TransactionEntry> personList) {
         transactionEntries = personList;
         notifyDataSetChanged();
     }
 
-
-
     public List<TransactionEntry> getTransactionEntries() {
         return transactionEntries;
+    }
+
+
+    public interface ItemClickListener {
+
+        void OnItemClick(int position);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -184,15 +184,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                     String date = sdf.format(transactionEntries.get(getAdapterPosition()).getDate());
 
 
-                    if (transactionEntries.get(getAdapterPosition()).getTransactionType().equals(Constants.incomeCategory)) {
-                        intent.putExtra("from", Constants.editIncomeString);
+                    if (transactionEntries.get(getAdapterPosition()).getTransactionType().equals(incomeCategory)) {
+                        intent.putExtra("from", editIncomeString);
                         intent.putExtra("amount", transactionEntries.get(getAdapterPosition()).getAmount());
                         intent.putExtra("description", transactionEntries.get(getAdapterPosition()).getDescription());
                         intent.putExtra("date", date);
                         intent.putExtra("category", transactionEntries.get(getAdapterPosition()).getCategory());
                         intent.putExtra("id", transactionEntries.get(getAdapterPosition()).getId());
                     } else {
-                        intent.putExtra("from", Constants.editExpenseString);
+                        intent.putExtra("from", editExpenseString);
                         intent.putExtra("amount", transactionEntries.get(getAdapterPosition()).getAmount());
                         intent.putExtra("description", transactionEntries.get(getAdapterPosition()).getDescription());
                         intent.putExtra("date", date);

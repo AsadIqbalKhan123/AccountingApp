@@ -108,18 +108,6 @@
                 android:hint="Description"
                 android:inputType="textPersonName|textCapSentences" />
 
-            <Button
-                android:id="@+id/clr_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:visibility="gone"
-                android:layout_weight="1"
-                android:backgroundTint="@color/divider_color"
-
-                android:text=" Clear " />
-
         </android.support.design.widget.TextInputLayout>
 
     </LinearLayout>

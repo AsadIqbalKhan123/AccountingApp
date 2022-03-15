@@ -199,14 +199,14 @@ public class AddExpenseActivity extends AppCompatActivity {
         }
 
 
-        button = findViewById(R.id.clr_btn);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onClearbtn();
-
-            }
-        });
+//        button = findViewById(R.id.clr_btn);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                onClearbtn();
+//
+//            }
+//        });
 
 
         dateLinearLayout.setOnClickListener(new View.OnClickListener() {

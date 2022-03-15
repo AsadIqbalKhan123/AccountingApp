@@ -1,8 +1,8 @@
 package com.shashank.expensermanager.activities;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -13,11 +13,14 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.shashank.expensermanager.Add_Category;
 import com.shashank.expensermanager.BuildConfig;
 import com.shashank.expensermanager.ExportPDF_Activity;
+import com.shashank.expensermanager.Login_Activity;
 import com.shashank.expensermanager.PDF_Activity;
 import com.shashank.expensermanager.Profile_Activity;
 import com.shashank.expensermanager.R;
@@ -27,17 +30,15 @@ import com.shashank.expensermanager.fragments.BalanceFragment;
 import com.shashank.expensermanager.fragments.CustomBottomSheetDialogFragment;
 import com.shashank.expensermanager.fragments.ExpenseFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     public static FloatingActionButton fab;
+
     private ViewPager mViewPager;
     private Toolbar toolbar;
-
     private DrawerLayout mainDrawerLayout;
     private NavigationView navigationView;
 
-
-    @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +47,15 @@ public class MainActivity extends AppCompatActivity {
         mainDrawerLayout = findViewById(R.id.drawer_layout);
 
         navigationView = findViewById(R.id.naviation_view);
+
+        navigationView.setNavigationItemSelectedListener(this);
+
+//        Myname = findViewById(R.id.name);
+
+        String name = getIntent().getStringExtra("name");
+
+        TextView txtProfileName = navigationView.getHeaderView(0).findViewById(R.id.tx_name);
+        txtProfileName.setText(name);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar1);
         setSupportActionBar(toolbar);
@@ -102,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
                     new AlertDialog.Builder(MainActivity.this).setTitle("Are you sure?").setMessage("Do you want to logout?").
                             setPositiveButton("Logout", (dialog, which) -> {
 
+                                startActivity(new Intent(MainActivity.this, Login_Activity.class));
 
                                 this.finishAffinity();
 
@@ -146,14 +157,14 @@ public class MainActivity extends AppCompatActivity {
 
                 case R.id.report_id:
 
-                    Intent repo = new Intent(MainActivity.this, PDF_Activity.class);
+                    Intent repo = new Intent(MainActivity.this, ExportPDF_Activity.class);
                     startActivity(repo);
 
                     break;
 
                 case R.id.backup_id:
 
-                    Intent myspinner = new Intent(MainActivity.this, ExportPDF_Activity.class);
+                    Intent myspinner = new Intent(MainActivity.this, PDF_Activity.class);
                     startActivity(myspinner);
 
                     break;
@@ -182,6 +193,10 @@ public class MainActivity extends AppCompatActivity {
 
         View view = navigationView.getHeaderView(0);
 
+//        Myname.findViewById(R.id.tx_name);
+//        String name = getIntent().getStringExtra("name");
+//        Myname.setText(name);
+
 //        imageView1 = findViewById(R.id.add_imge_btn);
 
         view.setOnClickListener(v ->
@@ -208,4 +223,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+//        int id = item.getItemId();
+//
+
+
+        return true;
+    }
 }

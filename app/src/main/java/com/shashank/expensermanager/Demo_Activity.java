@@ -35,6 +35,7 @@ public class Demo_Activity extends AppCompatActivity {
         loadCategory();
         et_name = (EditText) findViewById(R.id.et_name);
         add = findViewById(R.id.btn_add);
+
         button = findViewById(R.id.Save_btn);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,12 +1,13 @@
 package com.shashank.expensermanager;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Environment;
+import android.print.PrintAttributes;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
@@ -16,13 +17,18 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfDocument;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.LineSeparator;
 import com.shashank.expensermanager.models.Expense;
+import com.uttampanchasara.pdfgenerator.CreatePdf;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class PDF_Activity extends AppCompatActivity {
@@ -52,10 +58,10 @@ public class PDF_Activity extends AppCompatActivity {
         });
 
 
-//
-//        // in below  code i used libibaray you can check in gradle files .......
-////        implementation 'com.uttampanchasara.pdfgenerator:pdfgenerator:1.3'
-//
+
+        // in below  code i used libibaray you can check in gradle files .......
+//        implementation 'com.uttampanchasara.pdfgenerator:pdfgenerator:1.3'
+
 //        btn_pdf.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -76,23 +82,23 @@ public class PDF_Activity extends AppCompatActivity {
 //                            @Override
 //                            public void onSuccess(@NotNull String s) {
 //                                // do your stuff here
-////                        PdfDocument pdfDocument = new PdfDocument();
-////
-////                        File file = new File(Environment.getExternalStorageDirectory(), "Report.pdf");
-////
-////                        try {
-////                            // after creating a file name we will
-////                            // write our PDF file to that location.
-////                            pdfDocument.writeTo(new FileOutputStream(file));
-////
-////                            // below line is to print toast message
-////                            // on completion of PDF generation.
-////                            Toast.makeText(PDF_Activity.this, "PDF file generated successfully.", Toast.LENGTH_SHORT).show();
-////                        } catch (IOException e) {
-////                            // below line is used
-////                            // to handle error
-////                            e.printStackTrace();
-////                        }
+//                        PdfDocument pdfDocument = new PdfDocument();
+//
+//                        File file = new File(Environment.getExternalStorageDirectory(), "Repoo.pdf");
+//
+//                        try {
+//                            // after creating a file name we will
+//                            // write our PDF file to that location.
+//                            pdfDocument.writeTo(new FileOutputStream(file));
+//
+//                            // below line is to print toast message
+//                            // on completion of PDF generation.
+//                            Toast.makeText(PDF_Activity.this, "PDF file generated successfully.", Toast.LENGTH_SHORT).show();
+//                        } catch (IOException e) {
+//                            // below line is used
+//                            // to handle error
+//                            e.printStackTrace();
+//                        }
 //
 //                            }
 //                        })
