@@ -115,7 +115,7 @@ public class PDF_Activity extends AppCompatActivity {
          * Creating Document
          */
         Document document = new Document();
-        File file = new File(Environment.getExternalStorageDirectory() + "Repo.pdf");
+        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS) + "/Rep.pdf");
 
 // Location to save
         try {

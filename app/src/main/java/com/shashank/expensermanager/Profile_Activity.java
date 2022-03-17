@@ -39,10 +39,10 @@ public class Profile_Activity extends AppCompatActivity {
         floatingActionButton = findViewById(R.id.fab_add_photo);
 
 
-        String name = getIntent().getStringExtra("name");
-
+//        String name = getIntent().getStringExtra("name");
+//
         TextView userName = findViewById(R.id.user_textview);
-        userName.setText(name);
+//        userName.setText(name);
 
 
         imageView1.setOnClickListener(new View.OnClickListener() {

@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
@@ -30,11 +32,11 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.os.Environment.getExternalStorageDirectory;
-
 public class Sample_Act extends AppCompatActivity {
 
     public TransactionViewModel transactionViewModel;
+    Button button;
+    FileOutputStream fOut;
     private List<TransactionEntry> transactionEntries;
 
     @Override
@@ -43,7 +45,19 @@ public class Sample_Act extends AppCompatActivity {
         setContentView(R.layout.activity_sample_);
         transactionEntries = new ArrayList<>();
 
-        setupViewModel();
+        button = findViewById(R.id.print_pdf);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                setupViewModel();
+
+            }
+        });
+
+
     }
 
     private void genrate(List<TransactionEntry> list) {
@@ -52,9 +66,27 @@ public class Sample_Act extends AppCompatActivity {
             public void run() {
                 try {
                     Document document = new Document();
-                    File file = new File(Environment.getExternalStorageDirectory() + "/Marzi.pdf");
-                    PdfWriter.getInstance(document, new FileOutputStream(file));
+                    File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS) + "/Marzi.pdf");
+
+
+// Location to save
+                    try {
+                        PdfWriter.getInstance(document, new FileOutputStream(file));
+                    } catch (DocumentException | FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+// Creating output stream to write in the newly created file
+
+//                    try {
+//                        fOut = new FileOutputStream(file);
+//                    } catch (FileNotFoundException e) {
+//                        e.printStackTrace();
+//                    }
+//
                     document.open();
+
+                    PdfWriter.getInstance(document, new FileOutputStream(file));
+
                     document.setPageSize(PageSize.A4);
                     document.addCreationDate();
                     document.newPage();

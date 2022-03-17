@@ -23,8 +23,12 @@
 
     <string name="country_currency">Country Currency</string>
 
+    <string name="abouts_US">About US</string>
 
     <string name="pref_country_key">country_key</string>
+
+    <string name="pref_about_us_key">about_us</string>
+
     <string name="default_country">PK</string>
 
 
@@ -38,6 +42,11 @@
         of the navigation drawer-->
     <string name="nav_open">Open navigation drawer</string>
     <string name="nav_close">Close navigation drawer</string>
+
+
+    <string-array name="abouts_us">
+        <item>This App belong to SoftwareCraft Rawalpindi</item>
+    </string-array>
 
     <!--Countries-->
     <string-array name="countries_names">
@@ -526,9 +535,14 @@
         <item>ZW</item>
     </string-array>
 
-    <string-array name="date_formats">
-        <item>MM/dd/yyyy</item>
-        <item>dd/MM/yyyy</item>
+    <!--    <string-array name="date_formats">-->
+    <!--        <item>MM/dd/yyyy</item>-->
+    <!--        <item>dd/MM/yyyy</item>-->
+    <!--    </string-array>-->
+
+    <string-array name="about_us">
+        <item>SoftwareCraft Rawalpindi</item>
+
     </string-array>
 
 

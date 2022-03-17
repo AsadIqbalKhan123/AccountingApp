@@ -2,10 +2,12 @@ package com.sample;
 
 import android.arch.persistence.room.Room;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -15,6 +17,10 @@ import com.shashank.expensermanager.activities.MainActivity;
 import com.shashank.expensermanager.databinding.ActivityLogin2Binding;
 
 public class login_Act extends AppCompatActivity {
+
+    private static final String LOG_TAG = "Login";
+
+    String namePattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     ActivityLogin2Binding binding;
     MyDatabase myDB;
@@ -29,6 +35,21 @@ public class login_Act extends AppCompatActivity {
         binding = ActivityLogin2Binding.inflate(getLayoutInflater());
 
         setContentView(binding.getRoot());
+
+        SharedPreferences prefs;
+        prefs = getSharedPreferences("your_pref", MODE_PRIVATE);
+
+        boolean login_status = prefs.getBoolean("login_status", false);
+
+        if (login_status) {
+
+            Log.v(LOG_TAG, "UserInfo>>User already logged in");
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+            this.finish();
+
+        }
+
 
         myDB = Room.databaseBuilder(this, MyDatabase.class, "usertable")
                 .allowMainThreadQueries().fallbackToDestructiveMigration().build();
@@ -49,13 +70,15 @@ public class login_Act extends AppCompatActivity {
                             .putExtra("names", userName));
                     finish();
 
-                } else {
-                    if (userName.isEmpty() && password.isEmpty()) {
-                        binding.usernameLg.setError("Please Enter the UserName");
-                        binding.passwordLg.setError("Please Enter the Password");
-                        Toast.makeText(login_Act.this, "Invalid UserName or Password", Toast.LENGTH_SHORT).show();
-                    }
+                } else if (password.isEmpty() || password.length() < 3) {
+                    binding.passwordLg.setError("Please Enter the Password");
+                } else if (userName.isEmpty()) {
+                    binding.usernameLg.setError("UserName can not be empty !");
+                } else if (userName.equalsIgnoreCase(userName)) {
+                    binding.usernameLg.setError("Enter the User Name correctly");
+
                 }
+
                 // yeh bad mai kro gaa yaaad say !!1
             }
 

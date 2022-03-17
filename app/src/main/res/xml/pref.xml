@@ -9,6 +9,14 @@
         android:key="@string/pref_country_key"
         android:title="@string/country_currency" />
 
-    <ListPreference />
+    <ListPreference
+
+        android:defaultValue="Hi"
+        android:title="@string/abouts_US"
+        android:entries="@array/abouts_us"
+        android:entryValues="@array/about_us"
+        android:key="@string/pref_about_us_key"
+
+        />
 
 </PreferenceScreen>

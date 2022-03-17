@@ -1,5 +1,6 @@
 package com.shashank.expensermanager.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -34,19 +35,19 @@ import com.shashank.expensermanager.fragments.ExpenseFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final String LOG_TAG = "MainActivity";
     public static FloatingActionButton fab;
-
+    boolean doubleBackToExitPressedOnce = false;
     private ViewPager mViewPager;
     private Toolbar toolbar;
     private DrawerLayout mainDrawerLayout;
     private NavigationView navigationView;
 
-    boolean doubleBackToExitPressedOnce = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         mainDrawerLayout = findViewById(R.id.drawer_layout);
 
@@ -118,13 +119,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     new AlertDialog.Builder(MainActivity.this).setTitle("Are you sure?").setMessage("Do you want to logout?").
                             setPositiveButton("Logout", (dialog, which) -> {
 
-                                startActivity(new Intent(MainActivity.this, login_Act.class));
+                                        startActivity(new Intent(MainActivity.this, login_Act.class));
 
-                                this.finishAffinity();
+                                        this.finishAffinity();
 
 //                                FirebaseAuth.getInstance().signOut();
 
-                            }).show();
+                                    }
+
+
+                            ).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                            dialogInterface.dismiss();
+                        }
+                    })
+
+                            .show();
+
 
                     break;
 
