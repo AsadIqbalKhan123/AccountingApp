@@ -2,6 +2,8 @@ package com.shashank.expensermanager.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -16,12 +18,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.sample.login_Act;
 import com.shashank.expensermanager.Add_Category;
 import com.shashank.expensermanager.BuildConfig;
 import com.shashank.expensermanager.ExportPDF_Activity;
-import com.shashank.expensermanager.Login_Activity;
-import com.shashank.expensermanager.PDF_Activity;
 import com.shashank.expensermanager.Profile_Activity;
 import com.shashank.expensermanager.R;
 import com.shashank.expensermanager.SettingsActivity;
@@ -38,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar toolbar;
     private DrawerLayout mainDrawerLayout;
     private NavigationView navigationView;
+
+    boolean doubleBackToExitPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         TextView txtProfileName = navigationView.getHeaderView(0).findViewById(R.id.tx_name);
         txtProfileName.setText(name);
+
 
         toolbar = (Toolbar) findViewById(R.id.toolbar1);
         setSupportActionBar(toolbar);
@@ -108,11 +113,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     Intent i = new Intent(MainActivity.this, Add_Category.class);
                     startActivity(i);
                     break;
+
                 case R.id.logout_id:
                     new AlertDialog.Builder(MainActivity.this).setTitle("Are you sure?").setMessage("Do you want to logout?").
                             setPositiveButton("Logout", (dialog, which) -> {
 
-                                startActivity(new Intent(MainActivity.this, Login_Activity.class));
+                                startActivity(new Intent(MainActivity.this, login_Act.class));
 
                                 this.finishAffinity();
 
@@ -181,13 +187,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onBackPressed() {
 
-        if (mainDrawerLayout.isDrawerOpen(GravityCompat.START)) {
-            mainDrawerLayout.closeDrawer(GravityCompat.START);
-        } else {
+//        if (mainDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+//            mainDrawerLayout.closeDrawer(GravityCompat.START);
+//        }
+        if (doubleBackToExitPressedOnce) {
             super.onBackPressed();
+            return;
         }
 
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click  BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 2000);
     }
+
 
     private void setUpData() {
 

@@ -17,6 +17,7 @@ import android.support.v7.widget.AppCompatImageView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -38,9 +39,13 @@ public class Profile_Activity extends AppCompatActivity {
         floatingActionButton = findViewById(R.id.fab_add_photo);
 
 
+        String name = getIntent().getStringExtra("name");
+
+        TextView userName = findViewById(R.id.user_textview);
+        userName.setText(name);
 
 
-                imageView1.setOnClickListener(new View.OnClickListener() {
+        imageView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();

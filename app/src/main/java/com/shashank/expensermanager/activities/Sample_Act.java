@@ -3,6 +3,7 @@ package com.shashank.expensermanager.activities;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -23,10 +24,13 @@ import com.shashank.expensermanager.R;
 import com.shashank.expensermanager.transactionDb.TransactionEntry;
 import com.shashank.expensermanager.transactionDb.TransactionViewModel;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.os.Environment.getExternalStorageDirectory;
 
 public class Sample_Act extends AppCompatActivity {
 
@@ -48,8 +52,8 @@ public class Sample_Act extends AppCompatActivity {
             public void run() {
                 try {
                     Document document = new Document();
-                    String path = getApplicationContext().getCacheDir() + "/doc.pdf";
-                    PdfWriter.getInstance(document, new FileOutputStream(path));
+                    File file = new File(Environment.getExternalStorageDirectory() + "/Marzi.pdf");
+                    PdfWriter.getInstance(document, new FileOutputStream(file));
                     document.open();
                     document.setPageSize(PageSize.A4);
                     document.addCreationDate();

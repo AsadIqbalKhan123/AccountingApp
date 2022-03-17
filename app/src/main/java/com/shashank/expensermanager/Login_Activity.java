@@ -2,6 +2,8 @@ package com.shashank.expensermanager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +17,7 @@ import com.shashank.expensermanager.transactionDb.TransactionDao;
 import com.shashank.expensermanager.transactionDb.TransactionEntry;
 
 public class Login_Activity extends AppCompatActivity {
+
 
     EditText userId, passowrd;
     Button login_btn;
@@ -69,8 +72,8 @@ public class Login_Activity extends AppCompatActivity {
                             } else {
 
                                 String name = transactionEntry.name;
-                                startActivity(new Intent(Login_Activity.this, MainActivity.class)
-                                        .putExtra("name", name));
+                                startActivity(new Intent(Login_Activity.this, MainActivity.class));
+//                                        .putExtra("name", name));
 
                             }
 
@@ -83,4 +86,6 @@ public class Login_Activity extends AppCompatActivity {
         });
 
     }
+
+
 }

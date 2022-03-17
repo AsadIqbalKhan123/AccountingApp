@@ -14,12 +14,17 @@ public class TransactionEntry {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    private int amount ;
+    private int amount;
     private String category;
     private String description;
     private Date date;                  // COMPLETED: 13-09-2018 Add appropriate type converter
     private String transactionType; //to decide whether income or expense
 
+
+    public TransactionEntry(String userId, String password) {
+        this.userId = userId;
+        this.password = password;
+    }
 
     @ColumnInfo(name = "userId")
     String userId;

@@ -12,15 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.Sample_Act">
 
-        </activity>
-        <activity android:name=".Login_Activity" />
-
-        <activity
-            android:name=".Register_Activity"
-            android:theme="@style/AppTheme.NoActionBar">
-
+        <activity android:name="com.sample.login_Act">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,7 +21,18 @@
             </intent-filter>
 
         </activity>
+        <activity android:name="com.sample.SignUp" />
 
+        <activity android:name=".activities.Sample_Act" />
+
+        <activity android:name=".Login_Activity" />
+
+
+        <activity
+            android:name=".Register_Activity"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
         <activity
             android:name=".ExportPDF_Activity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -57,9 +61,7 @@
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.AddExpenseActivity" />
         <activity
             android:name=".activities.SplashScreen"
