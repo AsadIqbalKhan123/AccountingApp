@@ -11,10 +11,22 @@ public class UserTable {
     private String userName;
     private String password;
 
-    public UserTable(int id, String userName, String password) {
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    private String email;
+
+
+    public UserTable(int id, String userName, String password, String email) {
         this.id = id;
         this.userName = userName;
         this.password = password;
+        this.email = email;
     }
 
     public int getId() {

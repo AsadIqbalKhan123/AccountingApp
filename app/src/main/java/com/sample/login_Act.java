@@ -59,23 +59,23 @@ public class login_Act extends AppCompatActivity {
         binding.loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String userName = binding.usernameLg.getText().toString();
+                String userEmail = binding.emailLg.getText().toString();
                 String password = binding.passwordLg.getText().toString();
 
-                if (userDao.login(userName, password)) {
+                if (userDao.login(userEmail, password)) {
 
 
                     startActivity(new Intent(login_Act.this, MainActivity.class)
-                            .putExtra("name", userName)
-                            .putExtra("names", userName));
+                            .putExtra("name", userEmail));
+
                     finish();
 
                 } else if (password.isEmpty() || password.length() < 3) {
                     binding.passwordLg.setError("Please Enter the Password");
-                } else if (userName.isEmpty()) {
-                    binding.usernameLg.setError("UserName can not be empty !");
-                } else if (userName.equalsIgnoreCase(userName)) {
-                    binding.usernameLg.setError("Enter the User Name correctly");
+                } else if (userEmail.isEmpty()) {
+                    binding.emailLg.setError("UserName can not be empty !");
+                } else if (userEmail.equalsIgnoreCase(userEmail)) {
+                    binding.emailLg.setError("Enter the User Name correctly");
 
                 }
 

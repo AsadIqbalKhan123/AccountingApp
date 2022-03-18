@@ -10,11 +10,11 @@ public interface UserDao {
     @Insert
     void insertUser(UserTable userTable);
 
-    @Query("SELECT EXISTS (SELECT * from UserTable where userName=:userName)")
-    boolean is_taken(String userName);
+    @Query("SELECT EXISTS (SELECT * from UserTable where email=:email)")
+    boolean is_taken(String email);
 
-    @Query("SELECT EXISTS (SELECT * from UserTable where userName=:userName AND password=:password)")
-    boolean login(String userName, String password);
+    @Query("SELECT EXISTS (SELECT * from UserTable where email=:userEmail AND password=:password )")
+    boolean login(String userEmail, String password);
 
 
 }

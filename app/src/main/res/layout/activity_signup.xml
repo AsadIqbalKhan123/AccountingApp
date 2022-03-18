@@ -32,7 +32,7 @@
     <!--        android:padding="15dp" />-->
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/textinput2"
+        android:id="@+id/textinput1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="18dp"
@@ -53,9 +53,31 @@
 
     </android.support.design.widget.TextInputLayout>
 
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textinput2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="18dp"
+        android:layout_marginVertical="10dp"
+        android:backgroundTint="@android:color/transparent">
+
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/email_editText"
+            android:hint="Email"
+            android:inputType="text"
+            android:paddingLeft="10dp"
+            android:textColor="@color/black">
+
+        </android.support.design.widget.TextInputEditText>
+
+    </android.support.design.widget.TextInputLayout>
+
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/textinput1"
+        android:id="@+id/textinput3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="18dp"

@@ -16,9 +16,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatImageView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.Demo_Class;
 
 
 public class Profile_Activity extends AppCompatActivity {
@@ -39,10 +41,36 @@ public class Profile_Activity extends AppCompatActivity {
         floatingActionButton = findViewById(R.id.fab_add_photo);
 
 
-//        String name = getIntent().getStringExtra("name");
+        String name = getIntent().getStringExtra("list");
+        EditText userName = findViewById(R.id.userEmail_textview);
+        userName.setText(name);
+        userName.setEnabled(false);
+        userName.setFocusable(false);
+
+        EditText userName1 = findViewById(R.id.user_textview);
+        userName1.setText(Demo_Class.message);
+        userName1.setEnabled(false);
+        userName1.setFocusable(false);
+
+
+//        userName.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View view) {
 //
-        TextView userName = findViewById(R.id.user_textview);
-//        userName.setText(name);
+//
+////                String myName = userName.getText().toString();
+//                view.setEnabled(true);
+//                view.setFocusable(true);
+////                userName.setText(myName);
+//
+//                return false;
+//            }
+//        });
+//
+//        String name1 = getIntent().getStringExtra("table");
+//
+//            @SuppressLint("CutPasteId") TextView userName1 = findViewById(R.id.user_textview);
+//            userName1.setText(name1);
 
 
         imageView1.setOnClickListener(new View.OnClickListener() {

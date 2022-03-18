@@ -9,10 +9,12 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Toast;
 
+import com.Demo_Class;
 import com.sample.MyDB.MyDatabase;
 import com.sample.MyDB.UserDao;
 import com.sample.MyDB.UserTable;
 import com.shashank.expensermanager.databinding.ActivitySignupBinding;
+
 
 public class SignUp extends AppCompatActivity {
 
@@ -34,7 +36,7 @@ public class SignUp extends AppCompatActivity {
         userDao = myDB.getDao();
 
 
-        binding.usernameEditText.addTextChangedListener(new TextWatcher() {
+        binding.emailEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -49,10 +51,11 @@ public class SignUp extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
 
                 String userName = editable.toString();
-                if (userDao.is_taken(userName)) {
+                String userEmail = editable.toString();
+                if (userDao.is_taken(userEmail) && userDao.is_taken(userName)) {
 
                     isAllowed = false;
-                    Toast.makeText(SignUp.this, "UserName Already Taken ! Please Try Another ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this, "Email Already Taken ! Please Try Another ", Toast.LENGTH_SHORT).show();
                 } else {
                     isAllowed = true;
                 }
@@ -65,8 +68,10 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (isAllowed) {
-                    UserTable userTable = new UserTable(0, binding.usernameEditText.getText().toString(), binding.passwordEditText.getText().toString());
+                    UserTable userTable = new UserTable(0, binding.usernameEditText.getText().toString(), binding.passwordEditText.getText().toString(), binding.emailEditText.getText().toString());
                     userDao.insertUser(userTable);
+                    Demo_Class.message = binding.usernameEditText.getText().toString();
+
                     Toast.makeText(SignUp.this, "SuccessFully Register", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(SignUp.this, "UserName is Already Taken ! Please Try Another", Toast.LENGTH_SHORT).show();

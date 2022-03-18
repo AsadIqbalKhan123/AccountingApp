@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.Demo_Class;
 import com.sample.login_Act;
 import com.shashank.expensermanager.Add_Category;
 import com.shashank.expensermanager.BuildConfig;
@@ -55,12 +56,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         navigationView.setNavigationItemSelectedListener(this);
 
+
 //        Myname = findViewById(R.id.name);
 
-        String name = getIntent().getStringExtra("name");
+//        String name = getIntent().getStringExtra("name");
 
-        TextView txtProfileName = navigationView.getHeaderView(0).findViewById(R.id.tx_name);
-        txtProfileName.setText(name);
+        TextView txtProfileName = navigationView.getHeaderView(0).findViewById(R.id.tx_nam);
+        txtProfileName.setText(Demo_Class.message);
 
 
         toolbar = (Toolbar) findViewById(R.id.toolbar1);
@@ -169,8 +171,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 case R.id.profile_id:
 
-                    Intent k = new Intent(MainActivity.this, Profile_Activity.class);
-                    startActivity(k);
+                    startActivity(new Intent(getApplicationContext(), Profile_Activity.class));
 
                     break;
 
@@ -225,15 +226,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         View view = navigationView.getHeaderView(0);
 
-//        Myname.findViewById(R.id.tx_name);
-//        String name = getIntent().getStringExtra("name");
-//        Myname.setText(name);
 
-//        imageView1 = findViewById(R.id.add_imge_btn);
+//        view.setOnClickListener(v ->
+//                startActivity(new Intent(MainActivity.this, Profile_Activity.class))
+//        );
 
-        view.setOnClickListener(v ->
-                startActivity(new Intent(MainActivity.this, Profile_Activity.class))
-        );
 
 //        view.setOnClickListener(v -> {
 //            startActivity(new Intent(dashboard.this, Profile_Activity.class));
