@@ -41,9 +41,10 @@ public class Profile_Activity extends AppCompatActivity {
         floatingActionButton = findViewById(R.id.fab_add_photo);
 
 
-        String name = getIntent().getStringExtra("list");
+        String name = getIntent().getStringExtra("person");
         EditText userName = findViewById(R.id.userEmail_textview);
         userName.setText(name);
+
         userName.setEnabled(false);
         userName.setFocusable(false);
 

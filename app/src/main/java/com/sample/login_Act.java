@@ -66,7 +66,7 @@ public class login_Act extends AppCompatActivity {
 
 
                     startActivity(new Intent(login_Act.this, MainActivity.class)
-                            .putExtra("name", userEmail));
+                            .putExtra("email", userEmail));
 
                     finish();
 

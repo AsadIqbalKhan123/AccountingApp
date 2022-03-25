@@ -59,10 +59,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 //        Myname = findViewById(R.id.name);
 
-//        String name = getIntent().getStringExtra("name");
 
         TextView txtProfileName = navigationView.getHeaderView(0).findViewById(R.id.tx_nam);
         txtProfileName.setText(Demo_Class.message);
+
+
+        String name = getIntent().getStringExtra("email");
+        TextView txtEmail = findViewById(R.id.tx_email);
+        txtEmail.setText(name);
 
 
         toolbar = (Toolbar) findViewById(R.id.toolbar1);
@@ -171,7 +175,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 case R.id.profile_id:
 
-                    startActivity(new Intent(getApplicationContext(), Profile_Activity.class));
+                    startActivity(new Intent(getApplicationContext(), Profile_Activity.class)
+                            .putExtra("person", txtEmail.getText().toString()));
 
                     break;
 
